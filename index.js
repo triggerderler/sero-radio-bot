@@ -18,7 +18,7 @@ client.owner = client.config.OWNER_ID;
 client.dev = client.config.DEV_ID;
 client.color = client.config.EMBED_COLOR;
 if(!client.token) client.token = process.env.TOKEN;
-const ENV = process.env;
+const ENV = process.env.TOKEN;
 
 process.on('unhandledRejection', error => console.log(error));
 process.on('uncaughtException', error => console.log(error));
@@ -36,4 +36,4 @@ client.manager = new Manager({
 ["slash"].forEach(x => client[x] = new Collection());
 ["loadCommand", "loadEvent", "loadDatabase", "loadPlayer"].forEach(x => require(`./handlers/${x}`)(client));
 
-client.login(client.token);
+client.login(ENV);
