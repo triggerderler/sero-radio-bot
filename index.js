@@ -12,7 +12,7 @@ const radio = require(`./botconfig/radiostation.json`)
 
 client.once("ready", () =>{
     console.log(`Logged in as ${client.user.tag}`)
-    client.user.setActivity('Coded By : Hesam TooVinS', { type: 'WATCHING' }); //You can change type to : LISTENING , COMPETING , PLAYING 
+    client.user.setActivity('.radyo', { type: 'WATCHING' }); //You can change type to : LISTENING , COMPETING , PLAYING 
 })
 
 client.on("messageCreate", message =>{
@@ -22,7 +22,7 @@ client.on("messageCreate", message =>{
 	const command = args.shift().toLowerCase();
     
     //help menu 
-    if(command === "help"){
+    if(command === "yardim"){
         const helpembed = new MessageEmbed()
         .setTitle("📻 Help menu")
         .addFields(
@@ -41,7 +41,7 @@ client.on("messageCreate", message =>{
     }
 
     // radio list you can pick radio id and play
-    if(command == `radiolist`){
+    if(command == `radyolar`){
         const fs = require("fs")
        fs.readFile('./botconfig/radioid.json', 'utf8', function(err, contents) {
             const radioidembed = new MessageEmbed()
@@ -65,19 +65,19 @@ client.on("messageCreate", message =>{
     }
 
     //radio player
-    if(command == "radio"){
+    if(command == "radyo"){
         const role = db.get('role')
         if(message.author.id !== ownerid && !message.member.roles.cache.has(role))return message.reply(`:x: **You Dont Have permission to use this command! , you need <@&${role}> role**`)
-    if (!args[0]) return message.reply(":x: **You forgot to enter a Voice-Channel Id!** \n **Usage** : ``!radio [voiceid] [radioid]`` \n **e.g** : ``!radio 879417192553271367 2``")
-    if (!args[1]) return message.reply(":x: **You forgot to enter a Radio Id!** \n **Usage** : ``!radio [voiceid] [radioid]`` \n **e.g** : ``!radio 879417192553271367 2``")
+   // if (!args[0]) return message.reply(":x: **You forgot to enter a Voice-Channel Id!** \n **Usage** : ``!radio [voiceid] [radioid]`` \n **e.g** : ``!radio 879417192553271367 2``")
+    if (!args[0]) return message.reply(":x: **Radyo ID Yazmadın!** \n **Kullanış** : ``.radio [radioid]`` \n **e.g** : ``.radio 2``")
         const connection = voiceDiscord.joinVoiceChannel({
-            channelId: args[0],
+            channelId: message.member.voice.channel.id,
             guildId: message.guild.id,
             adapterCreator: message.guild.voiceAdapterCreator,
             selfDeaf: true,
         });
         const player = voiceDiscord.createAudioPlayer();
-        const resource = voiceDiscord.createAudioResource(radio[args[1]]);
+        const resource = voiceDiscord.createAudioResource(radio[args[0]]);
        
         player.play(resource);
        connection.subscribe(player);
@@ -85,7 +85,7 @@ client.on("messageCreate", message =>{
         connection.destroy();
         message.reply(`:x:**Radio Station Has Been Destroyed!**`)
     });
-    message.reply(`📻**Radio Started**`)
+    message.reply(`📻**Radyo Başlatıldı**`)
     }
 
     //restart bot 
@@ -97,7 +97,55 @@ client.on("messageCreate", message =>{
     message.channel.send(`✅ **Bot was successfully restarted**`)
    }
 // disconnect bot 
-
+// disconnect bot 
+     if(command == `dc`){
+	      if(message.author.id !== ownerid && !message.member.roles.cache.has('1179418965060091925'))return message.reply(`:x: **You Dont Have permission to use this command! , you need <@&${'1179418965060091925'}> role**`)
+      message.destroy();
+    message.reply('✅ **Bot was successfully Disconnected** ')
+     }
+// bot stats
+   if(command == `stats`){
+    const statsembed = new MessageEmbed()
+    .addFields(
+        {
+          name: ":robot: Client",
+          value: `┕\`🟢 Online!\``,
+          inline: true,
+        },
+        {
+          name: "⌛ Ping",
+          value: `┕\`${Math.round(message.client.ws.ping)}ms\``,
+          inline: true,
+        },
+       {
+            name: ":file_cabinet: Memory",
+            value: `┕\`${(process.memoryUsage().heapUsed / 1024 / 1024).toFixed(
+              2
+            )}mb\``,
+            inline: true,
+          },
+          {
+            name: ":robot: Version",
+            value: `┕\`v${require("./package.json").version}\``,
+            inline: true,
+          },
+          {
+            name: ":blue_book: Discord.js",
+            value: `┕\`v${version}\``,
+            inline: true,
+          },
+          {
+            name: ":green_book: Node",
+            value: `┕\`${process.version}\``,
+            inline: true,
+          },
+      )
+      .setColor("GREEN")
+      .setFooter(`Requested By ${message.author.username}` , message.author.displayAvatarURL({ format: 'png', dynamic: true }))
+      .setTimestamp()
+  
+      message.reply({ embeds: [statsembed]});
+   }
 
 });
 
