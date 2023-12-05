@@ -97,11 +97,7 @@ client.on("messageCreate", message =>{
     message.channel.send(`✅ **Bot was successfully restarted**`)
    }
 // disconnect bot 
-     if(command == `durdur`){
-	      if(message.author.id !== ownerid && !message.member.roles.cache.has(role))return message.reply(`:x: **You Dont Have permission to use this command! , you need <@&${role}> role**`)
-    connection.destroy();
-    message.reply('✅ **Bot was successfully Disconnected** ')
-     }
+
 // bot stats
    if(command == `stats`){
     const statsembed = new MessageEmbed()
