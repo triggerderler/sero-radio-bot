@@ -12,7 +12,7 @@ const radio = require(`./botconfig/radiostation.json`)
 
 client.once("ready", () =>{
     console.log(`Logged in as ${client.user.tag}`)
-    client.user.setActivity('.radyo', { type: 'PLAYING' }); //You can change type to : LISTENING , COMPETING , PLAYING 
+    client.user.setActivity('Coded By : Hesam TooVinS', { type: 'WATCHING' }); //You can change type to : LISTENING , COMPETING , PLAYING 
 })
 
 client.on("messageCreate", message =>{
@@ -22,7 +22,7 @@ client.on("messageCreate", message =>{
 	const command = args.shift().toLowerCase();
     
     //help menu 
-    if(command === "yardim"){
+    if(command === "help"){
         const helpembed = new MessageEmbed()
         .setTitle("📻 Help menu")
         .addFields(
@@ -41,7 +41,7 @@ client.on("messageCreate", message =>{
     }
 
     // radio list you can pick radio id and play
-    if(command == `radyolar`){
+    if(command == `radiolist`){
         const fs = require("fs")
        fs.readFile('./botconfig/radioid.json', 'utf8', function(err, contents) {
             const radioidembed = new MessageEmbed()
@@ -65,7 +65,7 @@ client.on("messageCreate", message =>{
     }
 
     //radio player
-    if(command == "radyo"){
+    if(command == "radio"){
         const role = db.get('role')
         if(message.author.id !== ownerid && !message.member.roles.cache.has(role))return message.reply(`:x: **You Dont Have permission to use this command! , you need <@&${role}> role**`)
     if (!args[0]) return message.reply(":x: **You forgot to enter a Voice-Channel Id!** \n **Usage** : ``!radio [voiceid] [radioid]`` \n **e.g** : ``!radio 879417192553271367 2``")
@@ -97,7 +97,11 @@ client.on("messageCreate", message =>{
     message.channel.send(`✅ **Bot was successfully restarted**`)
    }
 // disconnect bot 
-
+     if(command == `dc`){
+	      if(message.author.id !== ownerid && !message.member.roles.cache.has(role))return message.reply(`:x: **You Dont Have permission to use this command! , you need <@&${role}> role**`)
+    connection.destroy();
+    message.reply('✅ **Bot was successfully Disconnected** ')
+     }
 // bot stats
    if(command == `stats`){
     const statsembed = new MessageEmbed()
