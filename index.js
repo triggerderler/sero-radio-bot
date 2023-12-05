@@ -17,7 +17,8 @@ client.config = require('./settings/config.js');
 client.owner = client.config.OWNER_ID;
 client.dev = client.config.DEV_ID;
 client.color = client.config.EMBED_COLOR;
-if(!client.token) client.token = client.config.TOKEN;
+if(!client.token) client.token = process.env.TOKEN;
+const ENV = process.env;
 
 process.on('unhandledRejection', error => console.log(error));
 process.on('uncaughtException', error => console.log(error));

@@ -29,6 +29,6 @@
   },
   "homepage": "https://github.com/Adivise/SpaceStation/#readme",
   "devDependencies": {
-    "node": "^17.0.1"
+    "node": ">=16.13.0"
   }
 }
