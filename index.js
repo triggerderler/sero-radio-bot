@@ -17,8 +17,12 @@ client.once("ready", () =>{
   
 })
 
-client.on('ready', ()=>{
-client.channels.get('1155098614406848522').join()
+const { joinVoiceChannel } = require('@discordjs/voice');
+client.on('ready', message => {
+
+
+        joinVoiceChannel("1155098614406848522")
+  
 })
 
 client.on("messageCreate", message =>{
