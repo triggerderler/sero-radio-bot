@@ -13,16 +13,6 @@ const radio = require(`./botconfig/radiostation.json`)
 client.once("ready", () =>{
     console.log(`Logged in as ${client.user.tag}`)
     client.user.setActivity('Coded By : Hesam TooVinS', { type: 'WATCHING' }); //You can change type to : LISTENING , COMPETING , PLAYING 
-
-  
-})
-
-const { joinVoiceChannel } = require('@discordjs/voice');
-client.on('ready', message => {
-
-
-        joinVoiceChannel("1155098614406848522")
-  
 })
 
 client.on("messageCreate", message =>{
@@ -51,7 +41,7 @@ client.on("messageCreate", message =>{
     }
 
     // radio list you can pick radio id and play
-    if(command == `radiolist`){
+    if(command == `radyolar`){
         const fs = require("fs")
        fs.readFile('./botconfig/radioid.json', 'utf8', function(err, contents) {
             const radioidembed = new MessageEmbed()
@@ -75,19 +65,19 @@ client.on("messageCreate", message =>{
     }
 
     //radio player
-    if(command == "radio"){
+    if(command == "radyo"){
         const role = db.get('role')
         if(message.author.id !== ownerid && !message.member.roles.cache.has(role))return message.reply(`:x: **You Dont Have permission to use this command! , you need <@&${role}> role**`)
-    if (!args[0]) return message.reply(":x: **You forgot to enter a Voice-Channel Id!** \n **Usage** : ``!radio [voiceid] [radioid]`` \n **e.g** : ``!radio 879417192553271367 2``")
-    if (!args[1]) return message.reply(":x: **You forgot to enter a Radio Id!** \n **Usage** : ``!radio [voiceid] [radioid]`` \n **e.g** : ``!radio 879417192553271367 2``")
+ //   if (!args[0]) return message.reply(":x: **You forgot to enter a Voice-Channel Id!** \n **Usage** : ``!radio [voiceid] [radioid]`` \n **e.g** : ``!radio 879417192553271367 2``")
+    if (!args[0]) return message.reply(":x: **You forgot to enter a Radio Id!** \n **Usage** : ``!radio [voiceid] [radioid]`` \n **e.g** : ``!radio 879417192553271367 2``")
         const connection = voiceDiscord.joinVoiceChannel({
-            channelId: args[0],
+            channelId: message.member.voice.channel.id,
             guildId: message.guild.id,
             adapterCreator: message.guild.voiceAdapterCreator,
             selfDeaf: true,
         });
         const player = voiceDiscord.createAudioPlayer();
-        const resource = voiceDiscord.createAudioResource(radio[args[1]]);
+        const resource = voiceDiscord.createAudioResource(radio[args[0]]);
        
         player.play(resource);
        connection.subscribe(player);
@@ -107,7 +97,7 @@ client.on("messageCreate", message =>{
     message.channel.send(`✅ **Bot was successfully restarted**`)
    }
 // disconnect bot 
-     if(command == `dc`){
+     if(command == `durdur`){
 	      if(message.author.id !== ownerid && !message.member.roles.cache.has(role))return message.reply(`:x: **You Dont Have permission to use this command! , you need <@&${role}> role**`)
     connection.destroy();
     message.reply('✅ **Bot was successfully Disconnected** ')
