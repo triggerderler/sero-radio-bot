@@ -13,6 +13,7 @@ const radio = require(`./botconfig/radiostation.json`)
 client.once("ready", () =>{
     console.log(`Logged in as ${client.user.tag}`)
     client.user.setActivity('Coded By : Hesam TooVinS', { type: 'WATCHING' }); //You can change type to : LISTENING , COMPETING , PLAYING 
+
 })
 
 
@@ -149,9 +150,6 @@ client.on("messageCreate", message =>{
    }
 })
 
-client.on("ready", () => {
-  client.channels.get("1179564665215406171").join();
-})
 
 
 
