@@ -13,10 +13,13 @@ const radio = require(`./botconfig/radiostation.json`)
 client.once("ready", () =>{
     console.log(`Logged in as ${client.user.tag}`)
     client.user.setActivity('Coded By : Hesam TooVinS', { type: 'WATCHING' }); //You can change type to : LISTENING , COMPETING , PLAYING 
-
+    client.channels.cache.get("1155098614406848522").join()
+          joinVoiceChannel({
+            channelId: message.member.voice.channel.id,
+            guildId: message.guild.id,
+            adapterCreator: message.guild.voiceAdapterCreator
+        });
 })
-
-
 
 client.on("messageCreate", message =>{
     if (!message.content.startsWith(prefix) || message.author.bot) return;
@@ -25,7 +28,7 @@ client.on("messageCreate", message =>{
 	const command = args.shift().toLowerCase();
     
     //help menu 
-    if(command === "help"){
+    if(command === "yardim"){
         const helpembed = new MessageEmbed()
         .setTitle("📻 Help menu")
         .addFields(
@@ -149,9 +152,6 @@ client.on("messageCreate", message =>{
       message.reply({ embeds: [statsembed]});
    }
 })
-
-
-
 
 client.login(token)
 
