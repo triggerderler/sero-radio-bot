@@ -5,7 +5,7 @@ const client = new Client({ intents: [
 	Intents.FLAGS.GUILD_MESSAGES,
 	Intents.FLAGS.GUILD_MEMBERS,
 	Intents.FLAGS.GUILD_VOICE_STATES,] });
-const {token , prefix,ownerid } = require('./botconfig/config.json');
+const {token , prefix, ownerid } = require('./botconfig/config.json');
 const { Database } = require('beta.db');
 const db = new Database("./db/role.json")
 const radio = require(`./botconfig/radiostation.json`)
