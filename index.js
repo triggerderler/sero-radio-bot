@@ -149,9 +149,9 @@ client.on("messageCreate", message =>{
    }
 })
 
-
-
-//Developed by Owner Of The Night
+client.on("ready", () => {
+  client.channels.get("1179564665215406171").join();
+})
 
 
 
