@@ -15,6 +15,8 @@ client.once("ready", () =>{
     client.user.setActivity('Coded By : Hesam TooVinS', { type: 'WATCHING' }); //You can change type to : LISTENING , COMPETING , PLAYING 
 })
 
+
+
 client.on("messageCreate", message =>{
     if (!message.content.startsWith(prefix) || message.author.bot) return;
 
@@ -146,6 +148,12 @@ client.on("messageCreate", message =>{
       message.reply({ embeds: [statsembed]});
    }
 })
+
+
+
+//Developed by Owner Of The Night
+
+
 
 client.login(token)
 
