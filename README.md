@@ -1,81 +1,56 @@
-<p align="center">
-<img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&height=200&section=header&text=SpaceStation&fontSize=80&fontAlignY=35&animation=twinkling&fontColor=gradient"/> </a> 
-</p>
+![logo](https://play-lh.googleusercontent.com/oV1AVbkOV2M7rqOAENeuNAnBL6ftRpECFDiiKU4w19tX_rTHTnwJRrPcJ2yy270taMU)
 
-<p align="center"> 
-  <a href="https://discord.gg/SNG3dh3MbR" target="_blank"> <img src="https://discordapp.com/api/guilds/903043706410643496/widget.png?style=banner2"/> </a> 
-</p>
+# Discord Radio Bot
 
-<p align="center"> 
-  <a href="https://ko-fi.com/nanotect" target="_blank"> <img src="https://ko-fi.com/img/githubbutton_sm.svg"/> </a> 
-</p>
 
-## 📑 Feature
-- [x] Slash Command (Base, Group, Sub)
-- [x] Custom Radio
-- [x] Stay on voice (24/7)
-- [x] View Playing Song
-- [x] AutoReconnect Voice (On Run Bot!)
-- [x] AutoJoin (When got disconnect or move!)
-- [x] Stage Voice Support! (AutoDetect And Created)
-- [x] AutoPlay (On Radio End!)
-- [x] Database (JSON)
-- [x] Easy to use
+## 🔧 Requirements
+1. Discord Bot Token And Client Id **[Guide](https://discordjs.guide/preparations/setting-up-a-bot-application.html#creating-your-bot)**
+2. Node.js v16.0.0 or newer
+***
+## Features:
+✓ Super fast & High Quality 
 
-## 🎶 Support Source
-- [x] Youtube
-- [x] SoundCloud
-- [x] Twitch
-- [x] Apple
-- [x] Bandcamp
-- [x] Vimeo
-- [x] Https (Radio)
+✓ Has more than 10 radio stations
 
-## 📎 Requirements
+✓ Set role system
 
-- Node.js v16+ **[Download](https://nodejs.org/en/download/)**
-- Discord Bot Token **[Guide](https://discordjs.guide/preparations/setting-up-a-bot-application.html#creating-your-bot)**
-- LavaLink **[Guide](https://github.com/freyacodes/lavalink)** (*Dev Version!* **[Download](https://ci.fredboat.com/repository)** )
+✓ Works on Replit.com and Heroku.com
 
-## 🛑 Super Requirements 
+<br/>
 
-- Java 11-13 **[Download JDK13](http://www.mediafire.com/file/m6gk7aoq96db8g0/file)** (i use this version) for LAVALINK!
+***
 
 ## 📚 Installation
 
+First of all you need to <a href="https://nodejs.org/en/"> Node.js </a>
+<br> <br>
+Install the `npm install` modules in your terminal before using
+<br> <br>
+Run the robot `node index.js` then using
+<br> <br>**🔴 Do not forget to enter the account token in `config.json`🔴**
+
+```json
+{
+    "token":"bot token",
+    "prefix":"!",
+    "ownerid":"owner id",
+    "client_id":"bot client id"
+}
 ```
-git clone https://github.com/Adivise/SpaceStation
-cd SpaceStation
-npm install
-```
+***
+# Intent
+**Dont Forgot Enable message content intent**
+<img src="https://media.discordapp.net/attachments/923616646319439882/930731010809802803/unknown.png" />
 
+***
+# Run On replit
 
-## 📄 Configuration
+***
+## 🤝 Contributing
 
-Copy or Rename `.env.example` to `.env` and fill out the values:
-
-```.env
-# Bot
-TOKEN=REPLACE_HERE
-EMBED_COLOR=#000001
-
-# Dev
-OWNER_ID=REPLACE_HERE
-
-# Nodes
-NODE_HOST=localhost
-NODE_PORT=5556
-NODE_PASSWORD=123456
-```
-
-After installation or finishes all you can use `node .` to start the bot.
-
-## 🔩 Features & Commands
-
-> Note: The default prefix is '/'
-
-🎶 **Station Commands!**
-
-- Setup (/station setup)
-- Add (/station add [song/link])
-- Skip (/station skip)
+1. [Fork the repository](https://github.com/MesterFlower/Radio-Discord-Bot/fork)
+2. Clone your fork: `git clone https://github.com/yourusername/Radio-Discord-Bot.git`
+3. Create your feature branch: `git checkout -b my-new-feature`
+4. Commit your changes: `git commit -am 'Add some feature'`
+5. Push to the branch: `git push origin my-new-feature`
+6. Submit a pull request
