@@ -97,55 +97,9 @@ client.on("messageCreate", message =>{
     message.channel.send(`✅ **Bot was successfully restarted**`)
    }
 // disconnect bot 
-     if(command == `dc`){
-	      if(message.author.id !== ownerid && !message.member.roles.cache.has(role))return message.reply(`:x: **You Dont Have permission to use this command! , you need <@&${role}> role**`)
-    connection.destroy();
-    message.reply('✅ **Bot was successfully Disconnected** ')
-     }
-// bot stats
-   if(command == `stats`){
-    const statsembed = new MessageEmbed()
-    .addFields(
-        {
-          name: ":robot: Client",
-          value: `┕\`🟢 Online!\``,
-          inline: true,
-        },
-        {
-          name: "⌛ Ping",
-          value: `┕\`${Math.round(message.client.ws.ping)}ms\``,
-          inline: true,
-        },
-       {
-            name: ":file_cabinet: Memory",
-            value: `┕\`${(process.memoryUsage().heapUsed / 1024 / 1024).toFixed(
-              2
-            )}mb\``,
-            inline: true,
-          },
-          {
-            name: ":robot: Version",
-            value: `┕\`v${require("./package.json").version}\``,
-            inline: true,
-          },
-          {
-            name: ":blue_book: Discord.js",
-            value: `┕\`v${version}\``,
-            inline: true,
-          },
-          {
-            name: ":green_book: Node",
-            value: `┕\`${process.version}\``,
-            inline: true,
-          },
-      )
-      .setColor("GREEN")
-      .setFooter(`Requested By ${message.author.username}` , message.author.displayAvatarURL({ format: 'png', dynamic: true }))
-      .setTimestamp()
-  
-      message.reply({ embeds: [statsembed]});
-   }
-})
+
+
+});
 
 client.login(token)
 
