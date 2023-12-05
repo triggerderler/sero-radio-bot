@@ -13,12 +13,12 @@ const radio = require(`./botconfig/radiostation.json`)
 client.once("ready", () =>{
     console.log(`Logged in as ${client.user.tag}`)
     client.user.setActivity('Coded By : Hesam TooVinS', { type: 'WATCHING' }); //You can change type to : LISTENING , COMPETING , PLAYING 
-    client.channels.cache.get("1155098614406848522").join()
-          joinVoiceChannel({
-            channelId: message.member.voice.channel.id,
-            guildId: message.guild.id,
-            adapterCreator: message.guild.voiceAdapterCreator
-        });
+
+  
+})
+
+client.on('ready', ()=>{
+client.channels.get('1155098614406848522').join()
 })
 
 client.on("messageCreate", message =>{
