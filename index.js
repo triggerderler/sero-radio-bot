@@ -12,7 +12,7 @@ const radio = require(`./botconfig/radiostation.json`)
 
 client.once("ready", () =>{
     console.log(`Logged in as ${client.user.tag}`)
-    client.user.setActivity('Coded By : Hesam TooVinS', { type: 'WATCHING' }); //You can change type to : LISTENING , COMPETING , PLAYING 
+    client.user.setActivity('.radyo', { type: 'PLAYING' }); //You can change type to : LISTENING , COMPETING , PLAYING 
 })
 
 client.on("messageCreate", message =>{
@@ -68,16 +68,16 @@ client.on("messageCreate", message =>{
     if(command == "radyo"){
         const role = db.get('role')
         if(message.author.id !== ownerid && !message.member.roles.cache.has(role))return message.reply(`:x: **You Dont Have permission to use this command! , you need <@&${role}> role**`)
- //   if (!args[0]) return message.reply(":x: **You forgot to enter a Voice-Channel Id!** \n **Usage** : ``!radio [voiceid] [radioid]`` \n **e.g** : ``!radio 879417192553271367 2``")
-    if (!args[0]) return message.reply(":x: **You forgot to enter a Radio Id!** \n **Usage** : ``!radio [voiceid] [radioid]`` \n **e.g** : ``!radio 879417192553271367 2``")
+    if (!args[0]) return message.reply(":x: **You forgot to enter a Voice-Channel Id!** \n **Usage** : ``!radio [voiceid] [radioid]`` \n **e.g** : ``!radio 879417192553271367 2``")
+    if (!args[1]) return message.reply(":x: **You forgot to enter a Radio Id!** \n **Usage** : ``!radio [voiceid] [radioid]`` \n **e.g** : ``!radio 879417192553271367 2``")
         const connection = voiceDiscord.joinVoiceChannel({
-            channelId: message.member.voice.channel.id,
+            channelId: args[0],
             guildId: message.guild.id,
             adapterCreator: message.guild.voiceAdapterCreator,
             selfDeaf: true,
         });
         const player = voiceDiscord.createAudioPlayer();
-        const resource = voiceDiscord.createAudioResource(radio[args[0]]);
+        const resource = voiceDiscord.createAudioResource(radio[args[1]]);
        
         player.play(resource);
        connection.subscribe(player);
